@@ -2,7 +2,7 @@ package FileTypes;
 
 public class File implements FileSystem {
     private String name;
-    private String data;
+    private String content;
 
     private Folder parent = null;
 
@@ -12,7 +12,7 @@ public class File implements FileSystem {
 
     public File(String name, String data) {
         this.name = name;
-        this.data = data;
+        this.content = data;
     }
 
     @Override
@@ -31,12 +31,12 @@ public class File implements FileSystem {
         return name;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setContent(String data) {
+        this.content= data;
     }
 
-    public String getData() {
-        return data;
+    public String getContent() {
+        return content;
     }
 
     public void setParent(Folder parent) {
