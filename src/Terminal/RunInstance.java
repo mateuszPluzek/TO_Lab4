@@ -27,8 +27,6 @@ public class RunInstance {
         Scanner scanner = new Scanner(System.in);
         String input;
 
-        root.add(new Folder("Data"));
-
         while(true) {
             this.pwd();
             // Asking user for input

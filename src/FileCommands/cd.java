@@ -18,26 +18,19 @@ public class cd implements Command {
             return;
         }
         // set values
-        boolean isAbsolute = false;
         FileSystem tmp;
-        String tmpS = args[1];
-        for(int i =0; i < tmpS.length(); i++) {
-            if(tmpS.charAt(i) == ('/')) {
-                isAbsolute = true;
-                break;
-            }
-        }
-        //check argument for correct action
+        //check argument if its a special case
         if(args[1].equals(".") || args[1].equals("..") || args[1].equals("~")) {
             tmp = SpecialArg.specialArg(main, args[1]);
         }
+//        if it is not then make sure that the path is correctly parsed
         else {
-            if(isAbsolute)
+            if(AbsolutePathChecker.isAbsolute(args[1]))
                 tmp = AbsolutePath.parsePathToFolder(main, args[1]);
             else
                 tmp = main.getCurrFolder().find(args[1]);
         }
-
+//      changes the current directory if the given one exists
         if(tmp == null) {
             System.out.println("There's no such folder");
         }
