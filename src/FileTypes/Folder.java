@@ -26,8 +26,8 @@ public class Folder implements FileSystem {
     public void remove(String name) {
         for(int i = 0; i < this.children.size(); i++) {
             if(this.get(i).getName().equals(name)) {
-                System.out.println("Removed " + this.get(i).getName());
                 this.children.remove(i);
+//
                 break;
             }
         }

@@ -5,7 +5,7 @@ public class AbsolutePath {
 
     public static Folder parsePathToFolder(RunInstance main, String path) {
         String[] folders = path.split("/");
-        if(folders.length == 0)
+        if(folders.length < 1)
             return null;
 
         Folder current;

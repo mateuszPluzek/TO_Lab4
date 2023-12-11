@@ -10,4 +10,6 @@ public interface FileSystem {
 
     public String getName();
 
+    public void setName(String name);
+
 }
