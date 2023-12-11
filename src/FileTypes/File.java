@@ -8,11 +8,18 @@ public class File implements FileSystem {
 
     public File(String name) {
         this.name = name;
+        this.content = "";
     }
 
     public File(String name, String data) {
         this.name = name;
         this.content = data;
+    }
+
+    public File(File origin) {
+        this.name = origin.getName();
+        this.content = origin.getContent();
+        this.parent = origin.getParent();
     }
 
     @Override
@@ -31,8 +38,11 @@ public class File implements FileSystem {
         return name;
     }
 
-    public void setContent(String data) {
-        this.content= data;
+    public void setContent(String content) {
+        this.content = content;
+    }
+    public void addContent(String data) {
+        this.content += data;
     }
 
     public String getContent() {

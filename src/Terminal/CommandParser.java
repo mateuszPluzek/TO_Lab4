@@ -11,7 +11,7 @@ public class CommandParser {
         String[] args = input.split(" ");
         try {
 //            find the command
-            Class<?> clazz = Class.forName("FileCommands."+args[0]);
+            Class<?> clazz = Class.forName("FileCommands."+args[0].toLowerCase());
 //            determine the parameters
             Class<?>[] parameterTypes = new Class<?>[2];
             parameterTypes[0] = RunInstance.class;

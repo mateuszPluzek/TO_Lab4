@@ -17,6 +17,21 @@ public class Folder implements FileSystem {
         this.children = children;
     }
 
+    public Folder(Folder origin) {
+        this.name = origin.getName();
+        this.parent = origin.getParent();
+        this.children = new ArrayList<>();
+
+        if(origin.getChildren() != null) {
+            for (FileSystem f : origin.getChildren()) {
+                if (f instanceof File) {
+                    this.add(new File((File) f));
+                } else
+                    this.add(new Folder((Folder) f));
+            }
+        }
+    }
+
     public void add(FileSystem file) {
         this.children.add(file);
         file.setParent(this);

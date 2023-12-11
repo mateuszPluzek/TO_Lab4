@@ -5,9 +5,9 @@ import FileTypes.FileSystem;
 import FileTypes.Folder;
 import Terminal.*;
 
-public class mv implements Command{
+public class cp implements Command {
 
-    public mv() {}
+    public cp() {}
 
     @Override
     public void exec(RunInstance main, String[] args) {
@@ -48,17 +48,22 @@ public class mv implements Command{
             }
 //            the destination doesn't exists
             if(destination == null) {
-                source.setName(args[2]);
+                System.out.println("There is no destination with that name");
             }
 //            if it exists and is a folder
             else if(destination instanceof Folder) {
-                if(NameChecker.doesNameExist((Folder)destination, source.getName())) {
-                    source.getParent().remove(source.getName());
-                    source.setParent((Folder) destination);
-                    ((Folder) destination).add(source);
+                if(source instanceof File) {
+                    if(NameChecker.doesNameExist((Folder)destination, source.getName()))
+                        ((Folder) destination).add(new File((File)source));
+                    else
+                        System.out.println("File exists in the destination");
                 }
-                else
-                    System.out.println("File exists in the destination");
+                else {
+                    if(NameChecker.doesNameExist((Folder)destination, source.getName()))
+                        ((Folder) destination).add(new Folder((Folder)source));
+                    else
+                        System.out.println("Folder exists in the destination");
+                }
             }
             else {
                 System.out.println("Name already exists");
